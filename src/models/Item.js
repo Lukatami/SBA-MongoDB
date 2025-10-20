@@ -32,6 +32,8 @@ const itemSchema = new mongoose.Schema(
   }
 );
 
+itemSchema.index({ name: 1, supplier: 1 }, { unique: true });
+
 itemSchema.index({ category: 1 });
 itemSchema.index({ supplier: 1 });
 itemSchema.index({ name: "text" });

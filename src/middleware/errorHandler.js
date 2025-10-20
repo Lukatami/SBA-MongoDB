@@ -5,7 +5,7 @@ export default function errorHandler(err, req, res, next) {
   let message = err.message || "Something goes wrong from server side";
 
   res.status(statusCode).json({
-    succsess: false,
+    success: false,
     error: message,
   });
 }

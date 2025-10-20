@@ -23,6 +23,16 @@ export async function getUserById(req, res, next) {
 
 export async function createUser(req, res, next) {
   try {
+    const { username, email } = req.body;
+
+    const existingUser = await User.findOne({
+      $or: [{ username: username }, { email: email }],
+    });
+    if (existingUser) {
+      return res
+        .status(409)
+        .json({ error: `User with ${username} or ${email} already exists` });
+    }
     const user = new User(req.body);
     const savedUser = await user.save();
     res.status(201).json(savedUser);

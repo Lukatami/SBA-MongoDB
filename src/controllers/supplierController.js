@@ -23,6 +23,13 @@ export async function getSupplierById(req, res, next) {
 
 export async function createSupplier(req, res, next) {
   try {
+    const { name } = req.body;
+
+    const existingSupplier = await Supplier.findOne({ name });
+    if (existingSupplier) {
+      return res.status(409).json({ error: `Supplier ${name} already exists` });
+    }
+
     const supplier = new Supplier(req.body);
     const savedSupplier = await supplier.save();
     res.status(201).json(savedSupplier);

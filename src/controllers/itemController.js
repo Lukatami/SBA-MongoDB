@@ -36,6 +36,15 @@ export async function getItemsByCategory(req, res, next) {
 
 export async function createItem(req, res, next) {
   try {
+    const { name, supplier } = req.body;
+
+    const existingItem = await Item.findOne({ name, supplier });
+    if (existingItem) {
+      return res
+        .status(409)
+        .json({ error: `Item ${name} already exists for this supplier` });
+    }
+
     const item = new Item(req.body);
     const savedItem = await item.save();
 
