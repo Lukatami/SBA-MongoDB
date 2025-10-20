@@ -6,6 +6,8 @@ import route404Handler from "./middleware/route404Handler.js";
 import logger from "./middleware/logger.js";
 
 import usersRoutes from "./routes/users.js";
+import suppliersRoutes from "./routes/suppliers.js";
+import itemsRoutes from "./routes/items.js";
 
 dotenv.config();
 
@@ -23,6 +25,8 @@ app.get("/api/health", (req, res) => {
 });
 
 app.use("/api/users", usersRoutes);
+app.use("/api/suppliers", suppliersRoutes);
+app.use("/api/items", itemsRoutes);
 
 app.use(route404Handler);
 app.use(errorHandler);
