@@ -1,9 +1,11 @@
 import express from "express";
 import dotenv from "dotenv";
 
-import errorHandler from "../middleware/errorHandler.js";
-import route404Handler from "../middleware/route404Handler.js";
-import logger from "../middleware/logger.js";
+import errorHandler from "./middleware/errorHandler.js";
+import route404Handler from "./middleware/route404Handler.js";
+import logger from "./middleware/logger.js";
+
+import usersRoutes from "./routes/users.js";
 
 dotenv.config();
 
@@ -13,12 +15,14 @@ app.use(express.json());
 app.use(logger);
 
 // Basic health check route
-app.get("/health", (req, res) => {
+app.get("/api/health", (req, res) => {
   res.json({
     status: "OK",
     message: "Server is running",
   });
 });
+
+app.use("/api/users", usersRoutes);
 
 app.use(route404Handler);
 app.use(errorHandler);

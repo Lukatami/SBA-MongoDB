@@ -34,6 +34,6 @@ const itemSchema = new mongoose.Schema(
 
 itemSchema.index({ category: 1 });
 itemSchema.index({ supplier: 1 });
-itemSchema.index({ name: "text"});
+itemSchema.index({ name: "text" });
 
 export default mongoose.model("Item", itemSchema);
