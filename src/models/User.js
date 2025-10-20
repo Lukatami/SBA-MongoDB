@@ -27,4 +27,6 @@ const userSchema = new mongoose.Schema(
   }
 );
 
+// A unique constraint automatically creates indexes for the username and email address
+
 export default mongoose.model("User", userSchema);

@@ -61,7 +61,7 @@ export async function deleteSupplier(req, res, next) {
     if (!supplier) {
       return res.status(404).json({ error: "Supplier not found" });
     }
-    res.json({ message: "Supplier deleted" });
+    res.status(204).json({ message: "Supplier deleted" });
   } catch (error) {
     next(error);
   }

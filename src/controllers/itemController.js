@@ -82,7 +82,7 @@ export async function deleteItem(req, res, next) {
     if (!item) {
       return res.status(404).json({ error: "Item not found" });
     }
-    res.json({ message: "Item deleted" });
+    res.status(204).json({ message: "Item deleted" });
   } catch (error) {
     next(error);
   }

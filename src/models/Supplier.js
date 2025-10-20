@@ -25,6 +25,7 @@ const supplierSchema = new mongoose.Schema(
   }
 );
 
+// Optimize request via supplier email
 supplierSchema.index({ "contact.email": 1 });
 
 export default mongoose.model("Supplier", supplierSchema);

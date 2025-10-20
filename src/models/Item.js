@@ -32,10 +32,14 @@ const itemSchema = new mongoose.Schema(
   }
 );
 
+// Special db index to protect from duplicates with name and supplier combination
 itemSchema.index({ name: 1, supplier: 1 }, { unique: true });
 
+// Optimize request via category
 itemSchema.index({ category: 1 });
+// Optimize request via supplier
 itemSchema.index({ supplier: 1 });
+// Optimize request via text search
 itemSchema.index({ name: "text" });
 
 export default mongoose.model("Item", itemSchema);
