@@ -36,7 +36,7 @@
   ✅ 10+ commits (20++ with first project version)
 
 - Include a README file that contains a description of your application. This README must include a description of your API's available routes and their corresponding CRUD operations for reference.
-  ❌
+  ✅ Check README.md
 
 - Level of effort displayed in creativity and user experience.
   ✅ Relevant inventory theme. Clear, simple logic, attention to detail, structure, and transparency make the code maintainable and scalable.

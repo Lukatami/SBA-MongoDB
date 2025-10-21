@@ -7,6 +7,7 @@ const startServer = async () => {
   // Connect to database first
   const dbConnected = await connectDB();
 
+  // If it's not connected throw message
   if (!dbConnected) {
     console.log("❌ Server not started - database connection failed");
     return;
@@ -18,4 +19,5 @@ const startServer = async () => {
   });
 };
 
+// Main function npm run
 startServer();
