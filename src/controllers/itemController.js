@@ -34,6 +34,27 @@ export async function getItemsByCategory(req, res, next) {
   }
 }
 
+export async function getItemsBySupplier(req, res, next) {
+  try {
+    const { supplierId } = req.params;
+
+    const items = await Item.find({ supplier: supplierId }).populate(
+      "supplier",
+      "name"
+    );
+
+    if (!items.length) {
+      return res.status(404).json({
+        error: "No items found for this supplier",
+      });
+    }
+
+    res.json(items);
+  } catch (error) {
+    next(error);
+  }
+}
+
 export async function createItem(req, res, next) {
   try {
     const { name, supplier } = req.body;
