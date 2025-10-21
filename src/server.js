@@ -19,5 +19,5 @@ const startServer = async () => {
   });
 };
 
-// Main function npm run
+// Main function npm run app
 startServer();

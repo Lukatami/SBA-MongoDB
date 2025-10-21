@@ -1,3 +1,4 @@
+// Logger middleware allows to get logging for all requests
 export default function logger(req, res, next) {
   if (/^\/\.well-known/.test(req.originalUrl)) {
     return next();

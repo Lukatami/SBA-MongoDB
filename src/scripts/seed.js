@@ -20,6 +20,7 @@ async function seedData() {
     await Supplier.deleteMany({});
     await Item.deleteMany({});
 
+    // Beautification of console
     console.log("-------------------------------------");
     console.log("✅ Database cleared!");
     console.log("-------------------------------------");
@@ -34,25 +35,33 @@ async function seedData() {
 
     // Create Items
     const itemsData = sampleItems.map((item) => {
+      // Get all supplier IDs existing in the database and randomize it
       const randomIndex = Math.floor(Math.random() * suppliers.length);
       return {
+        // Spread item data
         ...item,
+        // Add randomized Supplier id
         supplier: suppliers[randomIndex].id,
       };
     });
     const items = await Item.create(itemsData);
     console.log(`✅ Created ${items.length} items`);
 
+    // Beautification of console
     console.log("-------------------------------------");
     console.log("✅ Sample data created successfully!");
     console.log("-------------------------------------");
 
+    // Console log seeding results
     console.log(
       `✅ Created: ${users.length} users, ${suppliers.length} suppliers, ${items.length} items`
     );
+
+    // 0 - Normal end of Process
     process.exit(0);
   } catch (error) {
     console.error("❌ Error seeding data:", error);
+    // 1 - End of process with fatal exception
     process.exit(1);
   }
 }
